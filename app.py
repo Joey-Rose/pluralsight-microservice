@@ -4,8 +4,9 @@ from flask_restful import Api
 from controllers.AccountController import OpenCustomerAccount, CloseCustomerAccount,ViewAccountDetails
 from controllers.TransactionController import CreditTransaction, DebitTransaction
 
+app = Flask(__name__)
+
 def main():
-    app = Flask(__name__)
     api = Api(app)
 
     # Bank Account
