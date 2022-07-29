@@ -1,13 +1,17 @@
 from flask import Flask
 from flask_restful import Api
-
-from controllers.AccountController import OpenCustomerAccount, CloseCustomerAccount,ViewAccountDetails
-from controllers.TransactionController import CreditTransaction, DebitTransaction
-
-app = Flask(__name__)
+from controllers.AccountController import OpenCustomerAccount, CloseCustomerAccount,ViewAccountDetails,Customers
+from controllers.TransactionController import HandleTransaction
+from os import getenv
 
 def main():
+    app = Flask(__name__)
     api = Api(app)
+
+    serverPort = getenv("APP_PORT","5555")
+
+    # Customers
+    api.add_resource(Customers,"/api/Customers")
 
     # Bank Account
     api.add_resource(OpenCustomerAccount,"/api/CustomerAccount/OpenCustomerAccount")
@@ -15,12 +19,9 @@ def main():
     api.add_resource(ViewAccountDetails,"/api/CustomerAccount/GetCustomerAccountByAccountNumber")
 
     # Account Transactions
-    # JSON must include the field `transactionType` set to 0 or 1.
-    # Debit = 0, Credit = 1
-    api.add_resource(CreditTransaction,"/api/CustomerAccount/ApplyTransactionToCustomerAccountAsync")
-    api.add_resource(DebitTransaction,"/api/CustomerAccount/ApplyTransactionToCustomerAccountAsync")
+    api.add_resource(HandleTransaction,"/api/CustomerAccount/ApplyTransactionToCustomerAccountAsync")
 
-    app.run(host="0.0.0.0",port=5555,debug=True)
+    app.run(host="0.0.0.0",port=int(serverPort),debug=True)
 
 
 if __name__ == "__main__":

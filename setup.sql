@@ -3,7 +3,7 @@
 -- https://www.sqlshack.com/understanding-sql-decimal-data-type/
 -- https://www.w3schools.com/sql/sql_datatypes.asp
 
-USE [launch-demo-db]
+USE [pluralsight_microservice]
 GO
 
 SET ANSI_NULLS ON
@@ -16,32 +16,32 @@ GO
 -- Maximum 10 digits (XXXXXXXX.XX) for balance
 -- OPEN => 1, CLOSED => 0
 CREATE TABLE accounts (
-    id INT AUTO_INCREMENT NOT NULL,
-    accountNumber VARCHAR(10) UNIQUE NOT NULL,
-    balance decimal(10,2) NOT NULL,
-    accountStatus INT NOT NULL,
-    PRIMARY KEY (id)
+                          id INT AUTO_INCREMENT NOT NULL,
+                          accountNumber VARCHAR(10) UNIQUE NOT NULL,
+                          balance decimal(10,2) NOT NULL,
+                          accountStatus INT NOT NULL,
+                          PRIMARY KEY (id)
 );
 
 CREATE TABLE customers (
-    id INT AUTO_INCREMENT NOT NULL,
-    firstName VARCHAR(50) NOT NULL,
-    lastName VARCHAR(50) NOT NULL,
-    accountID INT UNIQUE NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (accountID) REFERENCES accounts (ID)
+                           id INT AUTO_INCREMENT NOT NULL,
+                           firstName VARCHAR(50) NOT NULL,
+                           lastName VARCHAR(50) NOT NULL,
+                           accountID INT UNIQUE NOT NULL,
+                           PRIMARY KEY (id),
+                           FOREIGN KEY (accountID) REFERENCES accounts (ID)
 );
 
 -- Credit Transactions => 0
 --  Debit Transactions => 1
 -- Maximum 10 digits (XXXXXXXX.XX) for amount
 CREATE TABLE transactions (
-    id INT AUTO_INCREMENT NOT NULL,
-    amount decimal(10,2) NOT NULL,
-    transactionType INT NOT NULL,
-    accountID INT UNIQUE NOT NULL ,
-    PRIMARY KEY (id),
-    FOREIGN KEY (accountID) REFERENCES accounts (ID)
+                              id INT AUTO_INCREMENT NOT NULL,
+                              amount decimal(10,2) NOT NULL,
+                              transactionType INT NOT NULL,
+                              accountID INT NOT NULL ,
+                              PRIMARY KEY (id),
+                              FOREIGN KEY (accountID) REFERENCES accounts (ID)
 );
 
 -- Dummy Data

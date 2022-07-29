@@ -9,4 +9,15 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-CMD [ "python3", "-m" , "flask", "run", "-p", "5555"]
+# Flask App Config
+ENV APP_PORT 5555
+
+# MySQL Config
+ENV MYSQL_HOST 127.0.0.1
+ENV MYSQL_PORT 3306
+ENV MYSQL_USER admin
+ENV MYSQL_PASSWORD ""
+ENV MYSQL_DATABASE ""
+
+
+CMD [ "python3", "app.py"]
