@@ -4,6 +4,7 @@ from controllers.AccountController import OpenCustomerAccount, CloseCustomerAcco
 from controllers.TransactionController import HandleTransaction
 from os import getenv
 
+
 def main():
     app = Flask(__name__)
     api = Api(app)

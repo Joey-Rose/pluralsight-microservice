@@ -36,6 +36,8 @@ class HandleTransaction(Resource):
 
                 updateQuery = "UPDATE accounts SET balance = %.2f WHERE id LIKE %d" %(newBalance,record.get("id"))
 
+                print(f"LOGGING: {updateQuery}")
+
                 cursor.execute(updateQuery)
                 db.commit()
 
@@ -44,6 +46,8 @@ class HandleTransaction(Resource):
                 newBalance = float(record.get("balance")) + depositAmount
 
                 updateQuery = "UPDATE accounts SET balance = %.2f WHERE id LIKE %d" %(newBalance,record.get("id"))
+
+                print(f"LOGGING: {updateQuery}")
 
                 cursor.execute(updateQuery)
                 db.commit()

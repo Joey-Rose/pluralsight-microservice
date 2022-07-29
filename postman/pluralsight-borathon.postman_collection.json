@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "5d208e7f-7394-4bcc-937f-99d43c7bd257",
+		"name": "pluralsight-borathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Open Customer Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"Elon\",\n    \"lastname\": \"Musk\"\n}"
+				},
+				"url": {
+					"raw": "http://ec2-54-153-83-218.us-west-1.compute.amazonaws.com:5555/api/CustomerAccount/OpenCustomerAccount",
+					"protocol": "http",
+					"host": [
+						"ec2-54-153-83-218",
+						"us-west-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"CustomerAccount",
+						"OpenCustomerAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-54-153-83-218.us-west-1.compute.amazonaws.com:5555/api/CustomerAccount/GetCustomerAccountByAccountNumber?accountNumber=0707204979",
+					"protocol": "http",
+					"host": [
+						"ec2-54-153-83-218",
+						"us-west-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"CustomerAccount",
+						"GetCustomerAccountByAccountNumber"
+					],
+					"query": [
+						{
+							"key": "accountNumber",
+							"value": "0707204979",
+							"description": "an existing account number found in MySQL"
+						},
+						{
+							"key": "accountNumber",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-54-153-83-218.us-west-1.compute.amazonaws.com:5555/api/Customers",
+					"protocol": "http",
+					"host": [
+						"ec2-54-153-83-218",
+						"us-west-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"Customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Credit Deposit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountNumber\": \"0707204979\",\n    \"amount\": 1.0,\n    \"transactionType\": 1\n}"
+				},
+				"url": {
+					"raw": "http://ec2-54-153-83-218.us-west-1.compute.amazonaws.com:5555/api/CustomerAccount/ApplyTransactionToCustomerAccountAsync",
+					"protocol": "http",
+					"host": [
+						"ec2-54-153-83-218",
+						"us-west-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"CustomerAccount",
+						"ApplyTransactionToCustomerAccountAsync"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Debit Deposit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountNumber\": \"0707204979\",\n    \"amount\": 1.00,\n    \"transactionType\": 0\n}"
+				},
+				"url": {
+					"raw": "http://ec2-54-153-83-218.us-west-1.compute.amazonaws.com:5555/api/CustomerAccount/ApplyTransactionToCustomerAccountAsync",
+					"protocol": "http",
+					"host": [
+						"ec2-54-153-83-218",
+						"us-west-1",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"CustomerAccount",
+						"ApplyTransactionToCustomerAccountAsync"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,4 +1,3 @@
-
 from flask import request, jsonify
 from flask_restful import Resource, reqparse
 
@@ -123,7 +122,7 @@ class OpenCustomerAccount(Resource):
         else:
             response["message"] = "can't connect to MYSQL Database."
 
-        return response
+        return jsonify(response)
 
 
 class CloseCustomerAccount(Resource):
@@ -177,4 +176,4 @@ class CloseCustomerAccount(Resource):
         response["statusCode"] = 200
 
         db.close()
-        return response
+        return jsonify(response)
